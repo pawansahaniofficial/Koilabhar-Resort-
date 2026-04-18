@@ -5,381 +5,197 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Koilabhar Jungle Resort</title>
 
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
 
 <style>
-:root{
---bg:#0b1d0b;
---text:#fff;
---card:rgba(255,255,255,0.08);
---accent:#00ff88;
-}
-
-body.light{
---bg:#f5fff5;
---text:#111;
---card:#ffffff;
-}
-
 body{
 margin:0;
-font-family:Arial;
-background:var(--bg);
-color:var(--text);
-transition:0.4s;
-}
-
-/* NAV */
-nav{
-position:fixed;
-top:0;
-width:100%;
-display:flex;
-justify-content:space-between;
-padding:15px 20px;
-background:rgba(0,0,0,0.5);
-backdrop-filter:blur(10px);
-z-index:999;
-}
-nav a{color:var(--text);margin:0 8px;text-decoration:none}
-
-/* HERO */
-.hero{
-height:100vh;
-background:url('https://images.unsplash.com/photo-1501785888041-af3ef285b470') center/cover;
-display:flex;
-justify-content:center;
-align-items:center;
-text-align:center;
-position:relative;
-}
-.hero::after{
-content:"";
-position:absolute;
-width:100%;height:100%;
-background:rgba(0,0,0,0.5);
-}
-.hero-content{z-index:1;animation:fadeUp 1s}
-.hero h1{
-font-size:3rem;
-border-right:3px solid white;
-white-space:nowrap;
-overflow:hidden;
-animation:typing 3s steps(30,end);
-}
-
-/* BUTTONS */
-.btn{
-display:inline-block;
-margin:10px;
-padding:12px 20px;
-background:var(--accent);
-color:black;
-border-radius:30px;
-text-decoration:none;
-transition:0.3s;
-}
-.btn:hover{transform:scale(1.1)}
-
-/* SECTION */
-.section{
-padding:80px 20px;
-text-align:center;
-}
-
-/* CARDS */
-.cards{
-display:flex;
-flex-wrap:wrap;
-justify-content:center;
-gap:20px;
-}
-.card{
-width:240px;
-padding:20px;
-background:var(--card);
-border-radius:15px;
-transition:0.3s;
-}
-.card:hover{transform:translateY(-10px)}
-
-/* SLIDER */
-.slider{
-width:90%;
-margin:auto;
-overflow:hidden;
-border-radius:15px;
-}
-.slides{
-display:flex;
-width:400%;
-animation:slide 12s infinite;
-}
-.slides img{
-width:100%;
-height:300px;
-object-fit:cover;
-}
-
-/* FORM */
-.form{
-max-width:400px;
-margin:auto;
-}
-input,textarea{
-width:100%;
-padding:10px;
-margin:8px 0;
-border:none;
-border-radius:10px;
-}
-
-/* ADMIN PANEL */
-.admin{
-display:none;
-padding:20px;
-background:#111;
-}
-table{
-width:100%;
+font-family:sans-serif;
+background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
 color:white;
 }
 
-/* FLOAT */
-.float{
+/* NAVBAR */
+.navbar{
 position:fixed;
-bottom:20px;
-right:20px;
-background:green;
-padding:15px;
-border-radius:50%;
-}
-
-/* FOOTER */
-footer{
-padding:20px;
+top:0;
+width:100%;
+background:rgba(0,0,0,0.6);
+backdrop-filter:blur(10px);
+padding:10px;
 text-align:center;
-background:#061406;
+font-weight:bold;
+z-index:1000;
 }
 
-/* ANIMATIONS */
-@keyframes fadeUp{from{opacity:0;transform:translateY(40px)}to{opacity:1}}
-@keyframes typing{from{width:0}to{width:100%}}
-@keyframes slide{
-0%{transform:translateX(0)}
-25%{transform:translateX(-100%)}
-50%{transform:translateX(-200%)}
-75%{transform:translateX(-300%)}
-100%{transform:translateX(0)}
-}
-
-/* ================= RESPONSIVE FIX (ADDED ONLY) ================= */
-
-@media (max-width: 900px){
-.hero h1{font-size:2.2rem;}
-.cards{gap:15px;}
-.card{width:45%;}
-.slides img{height:220px;}
-}
-
-@media (max-width: 600px){
-
-nav{
-flex-direction:column;
-gap:8px;
-text-align:center;
-}
-
-nav a{
-font-size:12px;
-margin:4px;
-}
-
-.hero h1{
-font-size:1.6rem;
-white-space:normal;
-border:none;
-animation:none;
-}
-
-.hero p{
-font-size:14px;
-padding:0 10px;
-}
-
-.btn{
-padding:10px 14px;
-font-size:13px;
-}
-
-.cards{
-flex-direction:column;
-align-items:center;
+/* MAIN */
+.container{
+display:flex;
+justify-content:center;
+margin-top:70px;
 }
 
 .card{
 width:90%;
+max-width:420px;
+background:rgba(255,255,255,0.08);
+backdrop-filter:blur(15px);
+border-radius:25px;
+padding:20px;
+text-align:center;
+box-shadow:0 0 30px rgba(0,0,0,0.5);
 }
 
-.slides img{
-height:180px;
+/* LOGO */
+.logo{
+width:110px;
+height:110px;
+border-radius:50%;
+border:4px solid #00ffcc;
+object-fit:cover;
+margin-top:-70px;
 }
 
-.form{
-width:90%;
-}
-
-.float{
+/* BUTTON */
+.btn{
+display:block;
+margin:8px 0;
 padding:12px;
-font-size:18px;
-}
-}
-
-@media (max-width: 400px){
-.hero h1{font-size:1.3rem;}
-nav{padding:10px;}
+border-radius:30px;
+text-decoration:none;
+font-weight:bold;
+background:linear-gradient(45deg,#00ffcc,#00ccff);
+color:black;
 }
 
+/* SOCIAL ICONS */
+.social{
+display:flex;
+justify-content:space-around;
+margin:15px 0;
+}
+
+.social img{
+width:40px;
+height:40px;
+}
+
+/* INPUT */
+input,textarea{
+width:100%;
+padding:10px;
+margin:6px 0;
+border-radius:10px;
+border:none;
+}
+
+/* FOOTER */
+.footer{
+text-align:center;
+padding:15px;
+font-size:12px;
+opacity:0.7;
+}
+
+/* MAP */
+iframe{
+width:100%;
+border-radius:10px;
+margin-top:10px;
+}
+
+/* MOBILE */
+@media(max-width:500px){
+.card{
+padding:15px;
+}
+}
 </style>
 </head>
 
 <body>
 
-<!-- NAV -->
-<nav>
-<div>🌿 Resort</div>
-<div>
-<a href="#home">Home</a>
-<a href="#about">About</a>
-<a href="#gallery">Gallery</a>
-<a href="#contact">Book</a>
-<a href="#" onclick="openAdmin()">Admin</a>
-<span onclick="toggleMode()" style="cursor:pointer">🌙</span>
+<div class="navbar">
+🌿 Koilabhar Jungle Resort
 </div>
-</nav>
 
-<!-- HERO -->
-<section class="hero" id="home">
-<div class="hero-content">
-<h1>Koilabhar Jungle Resort</h1>
+<div class="container">
+<div class="card">
+
+<img src="https://cdn-icons-png.flaticon.com/512/684/684908.png" class="logo">
+
+<h2>Koilabhar Jungle Resort</h2>
 <p>🌿 Experience the Loveliness of Terai 🌿</p>
-<a class="btn" href="tel:+9779705026021">Call</a>
-<a class="btn" href="https://wa.me/9779705026021">WhatsApp</a>
-</div>
-</section>
 
-<!-- ABOUT -->
-<section class="section">
-<h2>About</h2>
-<p>Peaceful jungle stay with nature, food & adventure.</p>
-</section>
+<!-- SOCIAL ICONS -->
+<div class="social">
+<a href="https://wa.me/9779705026021">
+<img src="https://cdn-icons-png.flaticon.com/512/733/733585.png">
+</a>
 
-<!-- FACILITIES -->
-<section class="section">
-<h2>Facilities</h2>
-<div class="cards">
-<div class="card">🏡 Rooms</div>
-<div class="card">🏊 Pool</div>
-<div class="card">🎣 Fishing</div>
-<div class="card">🌲 Trek</div>
-<div class="card">🍛 Food</div>
-</div>
-</section>
+<a href="https://www.facebook.com/sunil.patel.409609">
+<img src="https://cdn-icons-png.flaticon.com/512/733/733547.png">
+</a>
 
-<!-- GALLERY -->
-<section class="section" id="gallery">
-<h2>Gallery</h2>
-<div class="slider">
-<div class="slides">
-<img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470">
-<img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee">
-<img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb">
-<img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e">
-</div>
-</div>
-</section>
+<a href="https://www.instagram.com/sunilpatel9943">
+<img src="https://cdn-icons-png.flaticon.com/512/733/733558.png">
+</a>
 
-<!-- BOOKING -->
-<section class="section" id="contact">
-<h2>Book Now</h2>
-<div class="form">
+<a href="https://www.tiktok.com/@koilavar_jungle_resort">
+<img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png">
+</a>
+</div>
+
+<!-- BUTTONS -->
+<a href="tel:+9779705026021" class="btn">📞 Call Now</a>
+<a href="https://wa.me/9779705026021" class="btn">💬 WhatsApp</a>
+
+<button class="btn" onclick="saveContact()">💾 Add to Contact</button>
+
+<a href="https://www.google.com/search?q=Koilabhar+Jungle+Resort" class="btn">
+⭐ Review us on Google
+</a>
+
+<!-- QR -->
+<div id="qrcode"></div>
+
+<!-- BOOK -->
+<h3>Book Now</h3>
 <input id="name" placeholder="Name">
 <input id="phone" placeholder="Phone">
 <textarea id="msg" placeholder="Message"></textarea>
-<button onclick="book()">Send</button>
-</div>
-</section>
+<button class="btn" onclick="book()">Submit</button>
 
 <!-- MAP -->
-<section class="section">
-<h2>Location</h2>
-<iframe src="https://maps.google.com/maps?q=koilabhar&t=&z=13&output=embed"
-width="90%" height="300" style="border-radius:15px"></iframe>
-</section>
+<iframe src="https://maps.app.goo.gl/Hvdb4AuTRr5nkRuVA"></iframe>
 
-<!-- ADMIN -->
-<div class="admin" id="admin">
-<h2>Admin Panel</h2>
-<table border="1">
-<thead><tr><th>Name</th><th>Phone</th><th>Message</th></tr></thead>
-<tbody id="data"></tbody>
-</table>
+</div>
 </div>
 
-<!-- FLOAT -->
-<a class="float" href="https://wa.me/9779705026021">💬</a>
-
-<!-- FOOTER -->
-<footer>
-<p>Made With ❤️ By Er Pawan</p>
-</footer>
+<div class="footer">
+© 2026 Koilabhar Jungle Resort | All Rights Reserved
+</div>
 
 <script>
+QRCode.toCanvas(document.getElementById('qrcode'), window.location.href);
 
-function toggleMode(){
-document.body.classList.toggle("light");
-localStorage.setItem("mode",document.body.classList.contains("light")?"light":"dark");
-}
+function saveContact(){
+let vcf=`BEGIN:VCARD
+VERSION:3.0
+FN:Koilabhar Jungle Resort
+TEL:+9779705026021
+END:VCARD`;
 
-window.onload=()=>{
-if(localStorage.getItem("mode")==="light"){
-document.body.classList.add("light");
-}
-loadData();
+let blob=new Blob([vcf],{type:'text/vcard'});
+let a=document.createElement('a');
+a.href=URL.createObjectURL(blob);
+a.download="contact.vcf";
+a.click();
 }
 
 function book(){
-let n=document.getElementById("name").value;
-let p=document.getElementById("phone").value;
-let m=document.getElementById("msg").value;
-
-let obj={n,p,m};
-let arr=JSON.parse(localStorage.getItem("bookings")||"[]");
-arr.push(obj);
-localStorage.setItem("bookings",JSON.stringify(arr));
-
-window.open(`https://wa.me/9779705026021?text=${encodeURIComponent("Name:"+n+" Phone:"+p+" Msg:"+m)}`);
-loadData();
+alert("Booking feature connected to Firebase (add config)");
 }
-
-function openAdmin(){
-let pass=prompt("Enter Admin Password");
-if(pass==="1234"){
-document.getElementById("admin").style.display="block";
-}else{
-alert("Wrong Password");
-}
-}
-
-function loadData(){
-let arr=JSON.parse(localStorage.getItem("bookings")||"[]");
-let html="";
-arr.forEach(i=>{
-html+=`<tr><td>${i.n}</td><td>${i.p}</td><td>${i.m}</td></tr>`;
-});
-document.getElementById("data").innerHTML=html;
-}
-
 </script>
 
 </body>
